@@ -1,4 +1,4 @@
-FROM docker.io/caddy:2.7.3-builder-alpine as builder
+FROM docker.io/caddy:2.7.4-builder-alpine as builder
 
 RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare@latest \
@@ -7,6 +7,6 @@ RUN xcaddy build \
     --with github.com/abiosoft/caddy-json-schema@latest \
     --with github.com/caddy-dns/rfc2136@latest
 
-FROM docker.io/caddy:2.7.3-alpine
+FROM docker.io/caddy:2.7.4-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
